@@ -1,0 +1,17 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cesar.localhost
+spec:
+  rules:
+  - host: cesar.localhost
+    http:
+      paths:
+        - pathType: Prefix
+          path: /
+          backend:
+            service:
+              name: ngix
+              port:
+                number: 8000

@@ -1,0 +1,17 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: master.local.localhost
+spec:
+  rules:
+  - host: master.local.localhost
+    http:
+      paths:
+        - pathType: Prefix
+          path: /
+          backend:
+            service:
+              name: httpd
+              port:
+                number: 8001

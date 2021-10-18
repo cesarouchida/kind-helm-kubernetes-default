@@ -1,0 +1,16 @@
+version: '3.8'
+
+# =======================
+# Container
+#     para SO
+#     sem makefile
+# =======================
+
+services:
+  make:
+    image: alpine/make
+    container_name: make
+    working_dir: /make
+    command: make
+    volumes:
+    - '../:/make'
