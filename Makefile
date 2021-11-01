@@ -10,11 +10,14 @@ all:
 generate:
 	kind create cluster --name $(NAME_PROJECT) --config=$(KIND_DIR)/$(KIND_CLUSTER)
 
-up: generate install
+up: generate install execute
 
 down:
 	kind delete cluster --name $(NAME_PROJECT)
 
 install:
-	timeout 60
 	kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/kind/deploy.yaml
+
+execute:
+	timeout 120
+	kubectl apply -f ./kubernetes/
